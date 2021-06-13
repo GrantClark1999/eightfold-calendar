@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
-function App() {
+import {
+  MonthlyCalendar,
+  Scheduler,
+  UserSelect,
+  WeeklyCalendar,
+} from './components';
+import { users } from './data';
+
+export default function App() {
+  const [activeUser, setActiveUser] = useState(users[0]);
+  const [date, setDate] = useState(new Date());
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex p-8 w-screen h-screen text-gray-700 bg-gray-200 select-none">
+      <div className="flex flex-col flex-shrink-0 mr-8 w-96 h-full">
+        <UserSelect active={activeUser} onSelect={setActiveUser} />
+        <MonthlyCalendar activeDay={date} onSelect={setDate} />
+        <Scheduler date={date} />
+      </div>
+      <div className="flex-grow flex-shrink bg-blue-500">
+        <WeeklyCalendar />
+      </div>
     </div>
   );
 }
-
-export default App;
