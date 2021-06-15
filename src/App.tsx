@@ -1,27 +1,32 @@
 import { useState } from 'react';
 
+import { UsersProvider, useUsers } from '@hooks/UsersContext';
+
 import {
   MonthlyCalendar,
+  Profile,
   Scheduler,
-  UserSelect,
   WeeklyCalendar,
 } from './components';
-import { users } from './data';
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
 
 export default function App() {
-  const [activeUser, setActiveUser] = useState(users[0]);
-  const [date, setDate] = useState(new Date());
+  const { users } = useUsers();
+  const [activeUserId, setActiveUserId] = useState(Object.keys(users)[0]);
+  const [date, setDate] = useState(today);
 
   return (
-    <div className="flex p-8 w-screen h-screen text-gray-700 bg-gray-200 select-none">
-      <div className="flex flex-col flex-shrink-0 mr-8 w-96 h-full">
-        <UserSelect active={activeUser} onSelect={setActiveUser} />
-        <MonthlyCalendar activeDay={date} onSelect={setDate} />
-        <Scheduler date={date} />
+    <UsersProvider>
+      <div className="flex p-8 w-screen h-screen bg-gray-200">
+        <div className="flex flex-col flex-shrink-0 mr-8 w-96 h-full">
+          <Profile activeId={activeUserId} onSelect={setActiveUserId} />
+          <MonthlyCalendar activeDay={date} onSelect={setDate} />
+          <Scheduler activeId={activeUserId} date={date} />
+        </div>
+        <WeeklyCalendar activeId={activeUserId} date={date} />
       </div>
-      <div className="flex-grow flex-shrink bg-blue-500">
-        <WeeklyCalendar />
-      </div>
-    </div>
+    </UsersProvider>
   );
 }

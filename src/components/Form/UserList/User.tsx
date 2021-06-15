@@ -1,15 +1,14 @@
+import { UserData } from '@data';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { UserData } from '../data';
 
 export default function User({ user, selected, onClick }: UserProps) {
   return (
     <button
-      className="flex items-center pl-4 pr-8 w-full h-12 hover:bg-blue-200 bg-white focus:outline-none shadow cursor-pointer"
+      className="flex items-center pl-4 pr-8 w-full h-12 hover:bg-blue-200 bg-white border-transparent rounded-none shadow"
       onClick={(e) => {
         e.stopPropagation();
-        onClick(user);
+        onClick();
       }}
     >
       <img
@@ -33,5 +32,5 @@ type UserProps = {
   key: number | string;
   user: UserData;
   selected: boolean;
-  onClick: (user: UserData) => void;
+  onClick: () => void;
 };

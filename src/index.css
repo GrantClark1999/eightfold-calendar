@@ -2,7 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply w-screen h-screen text-gray-700 bg-white select-none;
+  }
+  button {
+    @apply block px-4 py-2 font-medium border border-gray-300 rounded-md focus:outline-none;
+  }
+  h1 {
+    @apply text-2xl font-medium;
+  }
+  h2 {
+    @apply text-xl font-medium;
+  }
+  h3 {
+    @apply text-lg font-medium;
+  }
+  h4 {
+    @apply font-medium;
+  }
+}
+
+@layer components {
+  .card-md {
+    @apply bg-white rounded-md shadow-lg;
+  }
+  .card-lg {
+    @apply bg-white rounded-lg shadow-lg;
+  }
+  .card-xl {
+    @apply bg-white rounded-xl shadow-lg;
+  }
+}
+
 input[type='date']::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
+}
+
+/* Google Scrollbar */
+::-webkit-scrollbar {
+  background: transparent;
+  height: 16px;
+  width: 16px;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #dadce0;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  min-height: 40px;
+  border-bottom: 4px solid white;
+  border-left: 4px solid white;
+  border-right: 4px solid white;
+  border-top: 4px solid white;
 }

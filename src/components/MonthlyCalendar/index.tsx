@@ -1,14 +1,12 @@
-import { MouseEventHandler, useState } from 'react';
+import clsx from 'clsx';
+import { useState } from 'react';
 
-import {
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { DAYS, MONTHS } from '@data';
 
-import { DAYS, MONTHS } from '../data';
+import Arrow from '../Arrow';
 
 const today = new Date();
+today.setHours(0, 0, 0, 0);
 
 function getDays(month: number, year: number) {
   const firstDayOfWeek = new Date(year, month).getDay();
@@ -42,13 +40,13 @@ export default function MonthlyCalendar({
   }
 
   return (
-    <div className="mt-8 p-4 w-full text-center bg-white rounded-xl shadow-lg">
+    <div className="mt-8 p-4 w-full text-center card-xl">
       {/* Month & Year Selector */}
       <div className="flex items-center justify-between px-4">
         <Arrow direction="left" onClick={decrement} />
-        <h1 className="text-xl font-semibold">
+        <h2>
           {MONTHS[month]} {year}
-        </h1>
+        </h2>
         <Arrow direction="right" onClick={increment} />
       </div>
       {/* Day Selector */}
@@ -67,20 +65,21 @@ export default function MonthlyCalendar({
             <tr key={idx}>
               {row.map((day, idx) => {
                 const date = new Date(year, month, day).toDateString();
-                const active = day && (date === activeDay.toDateString());
-                const isToday = day && (date === today.toDateString());
+                const active = day && date === activeDay.toDateString();
+                const isToday = day && date === today.toDateString();
 
                 return (
                   <td
                     key={idx}
-                    className={`py-3 rounded-full ${
+                    className={clsx(
+                      'py-3 rounded-full',
                       isToday
                         ? 'font-medium text-white bg-blue-500 hover:bg-blue-600'
                         : active
                         ? 'font-medium text-blue-700 bg-blue-300 hover:bg-blue-400'
                         : 'hover:font-medium hover:text-blue-700 hover:bg-blue-300'
-                    }`}
-                    onClick={() => onSelect(new Date(year, month, day))}
+                    )}
+                    onClick={() => onSelect(new Date(year, month, day, 0, 0))}
                   >
                     {day}
                   </td>
@@ -97,25 +96,4 @@ export default function MonthlyCalendar({
 type MonthlyCalendarProps = {
   activeDay: Date;
   onSelect: (day: Date) => void;
-};
-
-// Helper React Component to help de-clutter
-function Arrow({ direction, onClick }: ArrowProps) {
-  return (
-    <div
-      className="flex items-center justify-center w-8 h-8 bg-white rounded-full cursor-pointer"
-      onClick={onClick}
-    >
-      <FontAwesomeIcon
-        icon={direction === 'left' ? faChevronLeft : faChevronRight}
-        className="text-blue-400"
-        size="lg"
-      />
-    </div>
-  );
-}
-
-type ArrowProps = {
-  direction: 'left' | 'right';
-  onClick: MouseEventHandler<HTMLDivElement>;
 };
