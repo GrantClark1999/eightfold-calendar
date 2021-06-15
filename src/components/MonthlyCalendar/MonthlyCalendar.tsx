@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { DAYS, MONTHS } from '@data';
 
-import Arrow from '../Arrow';
+import Arrow from './Arrow';
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);

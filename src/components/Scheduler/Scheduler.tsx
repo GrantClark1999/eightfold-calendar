@@ -4,7 +4,7 @@ import { MeetingData } from '@data';
 import { useUsers } from '@hooks/UsersContext';
 
 import ConflictsModal from '../ConflictsModal';
-import { DateDisplay, ParticipantsInput, TimeInput } from '../Form';
+import { DateDisplay, ParticipantsInput, TimeInput } from './';
 
 export default function Scheduler({ activeId, date }: SchedulerProps) {
   const [participants, setParticipants] = useState(new Set<string>([activeId]));

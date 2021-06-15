@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFlipVertical } from '@hooks/Transitions';
 import { useUsers } from '@hooks/UsersContext';
 
-import { UserList } from '../Form';
+import UserList from '../UserList';
 
 export default function Profile({ activeId, onSelect }: ProfileProps) {
   const [open, setOpen] = useState(false);

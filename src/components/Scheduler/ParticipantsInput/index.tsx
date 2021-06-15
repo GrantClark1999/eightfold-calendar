@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { animated as a } from 'react-spring';
 
+import UserList from '@components/UserList';
 import { useListPopIn } from '@hooks/Transitions';
 import { useUsers } from '@hooks/UsersContext';
 
-import { AddAvatarButton, UserList } from '../';
+import { AddAvatarButton } from '../';
 
 export default function ParticipantsInput({
   id,

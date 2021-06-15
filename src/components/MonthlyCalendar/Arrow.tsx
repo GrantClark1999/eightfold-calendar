@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function Arrow({ direction, onClick }: ArrowProps) {
   return (
     <button
+      name={direction === 'left' ? 'previous' : 'next'}
       className="flex items-center justify-center w-8 h-8 bg-white border-transparent rounded-full"
       onClick={onClick}
     >
