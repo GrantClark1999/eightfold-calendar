@@ -45,24 +45,24 @@ export default function WeeklyCalendar({
     const minTime = weekDays[0]?.getTime() ?? 0; // Sunday @ midnight
     const maxTime = minTime + 604800000; // Following Sunday @ midnight
     setActiveMeetings(
-      users[activeId].meetings
-        .filter(
+      users[activeId]?.meetings
+        ?.filter(
           (meeting) =>
             meeting.startTime >= minTime && meeting.endTime <= maxTime
         )
-        .reduce((acc: MeetingData[][], curr: MeetingData) => {
+        ?.reduce((acc: MeetingData[][], curr: MeetingData) => {
           const dayOfWeek = new Date(curr.startTime).getDay();
           if (!acc[dayOfWeek]) acc[dayOfWeek] = [];
           acc[dayOfWeek].push(curr);
           return acc;
-        }, [])
+        }, []) ?? []
     );
   }, [activeId, weekDays, users]);
 
   return (
-    <div className="relative px-4 w-full overflow-auto card-lg">
+    <div className="relative px-4 w-full overflow-x-scroll overflow-y-auto card-lg">
       {/* Day Headers */}
-      <div className="sticky z-10 top-0 flex justify-around mb-4 pl-24 pt-4 text-center bg-white">
+      <div className="sticky z-10 top-0 flex justify-around mb-4 pl-24 pt-4 text-center bg-white overflow-x-hidden">
         {weekDays.map((weekday) => (
           <div key={weekday.getTime()} className="w-full min-w-16">
             <p className="text-gray-400 text-sm font-medium">
@@ -74,7 +74,7 @@ export default function WeeklyCalendar({
       </div>
       <div className="flex">
         {/* Times */}
-        <div className="flex-col justify-between mr-4 w-20 h-full text-right">
+        <div className="flex-col flex-shrink-0 justify-between mr-4 w-20 h-full text-right">
           {TIMES.map((time) => (
             <p key={time} className="mb-8">
               {time}
@@ -84,13 +84,16 @@ export default function WeeklyCalendar({
         {/* Meetings */}
         <div className="flex flex-1 justify-around border-r border-gray-200">
           {DAYS.map((_, idx) => (
-            <div key={idx} className="relative flex-1 border-l border-gray-200">
-              {activeMeetings[idx]?.map((meeting) => (
+            <div
+              key={idx}
+              className="relative flex-1 min-w-16 border-l border-gray-200"
+            >
+              {activeMeetings[idx]?.map((meeting, meetingNum) => (
                 <div
                   key={meeting.id}
                   className={clsx(
                     'absolute left-0 right-0 bg-opacity-50 card-md',
-                    `bg-${COLORS[idx % COLORS.length]}-700`
+                    `bg-${COLORS[meetingNum % COLORS.length]}-700`
                   )}
                   style={getMeetingStyles(meeting)}
                 />

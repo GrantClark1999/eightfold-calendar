@@ -14,7 +14,7 @@ export default function Scheduler({ activeId, date }: SchedulerProps) {
   const [conflicts, setConflicts] = useState<MeetingData[]>([]);
   const [showModal, setShowModal] = useState(false);
 
-  const { createMeeting, getConflicts } = useUsers();
+  const { createMeeting, getConflicts, users } = useUsers();
 
   const isValid = (time: number) => time && startTime < endTime;
   const getTimestamp = (time: number) => date.getTime() + time;
@@ -67,14 +67,10 @@ export default function Scheduler({ activeId, date }: SchedulerProps) {
 
       {/* Participant Multiselect */}
       <div className="mt-4">
-        <label htmlFor="participants" className="text-sm font-medium">
-          Participants
-          <ParticipantsInput
-            id="participants"
-            selectedIds={participants}
-            onSelect={changeParticipants}
-          />
-        </label>
+        <ParticipantsInput
+          selectedIds={participants}
+          onSelect={changeParticipants}
+        />
       </div>
 
       {/* Show date picked from monthly calendar (mm/dd/yyyy) */}

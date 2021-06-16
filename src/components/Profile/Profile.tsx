@@ -20,8 +20,8 @@ export default function Profile({ activeId, onSelect }: ProfileProps) {
   const toggleOpen = () => setOpen((isOpen) => !isOpen);
 
   return (
-    <button
-      className="relative flex flex-shrink-0 items-center px-4 w-full h-24 text-left bg-white border-transparent rounded-none shadow-lg"
+    <div
+      className="relative flex flex-shrink-0 items-center px-4 w-full h-24 text-left bg-white shadow-lg"
       onClick={toggleOpen}
     >
       {/* Active User Avatar */}
@@ -53,7 +53,7 @@ export default function Profile({ activeId, onSelect }: ProfileProps) {
           setOpen(false);
         }}
       />
-    </button>
+    </div>
   );
 }
 

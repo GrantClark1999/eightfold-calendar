@@ -21,8 +21,8 @@ export default function TimeInput({
         {label}
         <input
           type="time"
-          name={camelCaseLabel}
           id={camelCaseLabel}
+          name={camelCaseLabel}
           className={clsx(
             'block mt-1 border-gray-300 rounded-md shadow-sm select-none',
             invalid && 'border-red-500'

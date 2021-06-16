@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@data": ["src/data/index.ts"],
-      "@hooks/*": ["src/hooks/*"],
+      "@data": ["./data/index.ts"],
+      "@components/*": ["./components/*"],
+      "@hooks/*": ["./hooks/*"]
     }
   }
 }

@@ -1,9 +1,10 @@
 // Get 'yyyy-mm-dd' as a string in the local time zone
 function getLocalDate(date: Date) {
   const month = date.getMonth() + 1;
-  return `${date.getFullYear()}-${
-    month < 10 ? '0' : ''
-  }${month}-${date.getDate()}`;
+  const day = date.getDate();
+  return `${date.getFullYear()}-${month < 10 ? '0' : ''}${month}-${
+    day < 10 ? '0' : ''
+  }${day}`;
 }
 
 export default function DateDisplay({ date }: DateDisplayProps) {
