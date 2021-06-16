@@ -18,6 +18,7 @@ module.exports = {
   variants: {
     extend: {
       fontWeight: ['hover'],
+      zIndex: ['hover'],
     },
   },
   plugins: [require('@tailwindcss/forms')],
