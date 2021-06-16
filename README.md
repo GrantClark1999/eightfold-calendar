@@ -4,15 +4,21 @@ Project creating a Calendar component from scratch using React.
 
 ## Getting Started
 
+(Quick Start)
+
+`git clone https://github.com/GrantClark209/eightfold-calendar.git` : Type from the command-line wherever you would like to install the project. Alternatively, download the zip file from github and extract to the desired install location.
+
 `yarn` : Install all project dependencies
 
 `yarn start` : Run the project in development mode
+
+(Optional)
 
 `yarn test` : Run available tests
 
 `yarn build` : Create an optimized production build
 
-## Instructions
+## Project Instructions
 
 1. Implement a Calendar Component, where Months, Days, Time on a specific day are represented.
 2. Implement the procedure to schedule meetings, for your users. A sample set of 5 users can be created to be present in the company.
@@ -25,6 +31,9 @@ Project creating a Calendar component from scratch using React.
 - [X] Add a warning message if the calendar is not free for a user invited in the meeting, but overlapping meetings can be created.
 - [X] Provide a dropdown to select users and switch calendars based on the selected user.
 - [ ] Suggested rooms for the meetings (A set of 5 meeting rooms can be created).
+
+  I did not get around to implementing this feature, as I wanted to make sure I took my time when implementing the other components and make the application look professional. The algorithm for suggesting rooms would not difficult to implement, but I did not want to delay submitting the project for too much longer, as implementing a display / component for showing and selecting the suggested meetings might take an additional day or two, depending on personal obligations.
+
 - [X] The component should render under `200ms`.
 
 ### Render Time
