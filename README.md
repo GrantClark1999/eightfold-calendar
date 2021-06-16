@@ -4,7 +4,7 @@ Project creating a Calendar component from scratch using React.
 
 ## Getting Started
 
-(Quick Start)
+### Quick Start
 
 `git clone https://github.com/GrantClark209/eightfold-calendar.git` : Type from the command-line wherever you would like to install the project. Alternatively, download the zip file from github and extract to the desired install location.
 
@@ -12,7 +12,7 @@ Project creating a Calendar component from scratch using React.
 
 `yarn start` : Run the project in development mode
 
-(Optional)
+### Optional
 
 `yarn test` : Run available tests
 
