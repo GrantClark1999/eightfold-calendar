@@ -11,6 +11,7 @@ export default function AddAvatarButton({ isAdding, toggleAdding }: AddAvatarBut
 
   return (
     <a.button
+      id="add-user"
       className={clsx(
         'flex flex-shrink-0 justify-center w-10 h-10 text-white rounded-full ring-white ring-2',
         isAdding ? 'bg-red-400' : 'bg-green-400'
