@@ -73,11 +73,14 @@ export default function MonthlyCalendar({
                     key={idx}
                     className={clsx(
                       'py-3 rounded-full',
+                      day && 'cursor-pointer',
                       isToday
                         ? 'font-medium text-white bg-blue-500 hover:bg-blue-600'
                         : active
                         ? 'font-medium text-blue-700 bg-blue-300 hover:bg-blue-400'
-                        : 'hover:font-medium hover:text-blue-700 hover:bg-blue-300'
+                        : day
+                        ? 'hover:font-medium hover:text-blue-700 hover:bg-blue-300'
+                        : ''
                     )}
                     onClick={() => onSelect(new Date(year, month, day, 0, 0))}
                   >
