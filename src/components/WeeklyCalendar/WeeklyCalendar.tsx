@@ -46,10 +46,14 @@ export default function WeeklyCalendar({
     const maxTime = minTime + 604800000; // Following Sunday @ midnight
     setActiveMeetings(
       users[activeId]?.meetings
+        // Get only meetings for this week
         ?.filter(
           (meeting) =>
             meeting.startTime >= minTime && meeting.endTime <= maxTime
         )
+        // Sort to make shorter meetings appear in front of longer meetings
+        ?.sort((a, b) => b.endTime - b.startTime - (a.endTime - a.startTime))
+        // Make each day of the week have its own array of meetings
         ?.reduce((acc: MeetingData[][], curr: MeetingData) => {
           const dayOfWeek = new Date(curr.startTime).getDay();
           if (!acc[dayOfWeek]) acc[dayOfWeek] = [];
@@ -92,8 +96,8 @@ export default function WeeklyCalendar({
                 <div
                   key={meeting.id}
                   className={clsx(
-                    'absolute left-0 right-0 bg-opacity-50 card-md',
-                    `bg-${COLORS[meetingNum % COLORS.length]}-700`
+                    'absolute z-100 left-0 right-0 hover:bg-opacity-100 bg-opacity-50 transform hover:scale-105 transition duration-300 card-md',
+                    `${COLORS[meetingNum % COLORS.length]}`
                   )}
                   style={getMeetingStyles(meeting)}
                 />
