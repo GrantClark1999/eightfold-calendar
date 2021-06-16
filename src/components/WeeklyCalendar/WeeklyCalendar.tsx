@@ -96,7 +96,8 @@ export default function WeeklyCalendar({
                 <div
                   key={meeting.id}
                   className={clsx(
-                    'absolute z-40 hover:z-50 left-0 right-0 hover:bg-opacity-100 bg-opacity-50 transform hover:scale-105 transition duration-300 card-md',
+                    'absolute z-40 left-0 right-0 bg-opacity-50 card-md',
+                    'hover:z-50 hover:bg-opacity-100 transform hover:scale-105 transition duration-300',
                     `${COLORS[meetingNum % COLORS.length]}`
                   )}
                   style={getMeetingStyles(meeting)}
