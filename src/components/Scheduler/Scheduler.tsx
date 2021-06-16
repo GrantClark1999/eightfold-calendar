@@ -14,7 +14,7 @@ export default function Scheduler({ activeId, date }: SchedulerProps) {
   const [conflicts, setConflicts] = useState<MeetingData[]>([]);
   const [showModal, setShowModal] = useState(false);
 
-  const { createMeeting, getConflicts, users } = useUsers();
+  const { createMeeting, getConflicts } = useUsers();
 
   const isValid = (time: number) => time && startTime < endTime;
   const getTimestamp = (time: number) => date.getTime() + time;
